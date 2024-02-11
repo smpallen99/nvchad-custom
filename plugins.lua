@@ -10,8 +10,9 @@ local plugins = {
   -- Override plugin definition options
 
   {
-    dir = "~/myprojects/neovim/elixir-projectionist",
-    name = "elixir-projectionist",
+    "smpallen99/elixir-projectionist.nvim",
+    enable = true,
+    lazy = false,
     config = function()
       require("elixir-projectionist").setup()
     end,

@@ -14,6 +14,27 @@ local M = {}
 --   t = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
 -- }
 --
+--
+M.whichkey = {
+  plugin = true,
+
+  n = {
+    ["<leader>WK"] = {
+      function()
+        vim.cmd "WhichKey"
+      end,
+      "Which-key all keymaps",
+    },
+    ["<leader>Wk"] = {
+      function()
+        local input = vim.fn.input "WhichKey: "
+        vim.cmd("WhichKey " .. input)
+      end,
+      "Which-key query lookup",
+    },
+  },
+}
+
 M.general = {
   n = {
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
@@ -27,34 +48,64 @@ M.general = {
     },
 
     -- ["<leader>g"] = { function() end, "+ 󰊢 Git" },
+    ["<leader>W"] = { function() end, "Workspace & Whickkey" },
+    ["<leader>Wa"] = {
+      function()
+        vim.lsp.buf.add_workspace_folder()
+      end,
+      "Add workspace folder",
+    },
 
-    ["<leader>ww"] = { ":w<cr>", "Write file" },
+    ["<leader>Wr"] = {
+      function()
+        vim.lsp.buf.remove_workspace_folder()
+      end,
+      "Remove workspace folder",
+    },
+
+    ["<leader>Wl"] = {
+      function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+      end,
+      "List workspace folders",
+    },
+
+    ["<leader>w"] = { ":w<cr>", "Write file" },
     -- ["<leader>w"] = { ":w<cr>", "Write file", opts = { nowait = true } },
     -- ["<leader>e"] = { ":NvimTreeToggle<cr>", "Toggle explorer", opts = { nowait = true}},
     ["<leader>r"] = { ":b#<cr>", "Last buffer", opts = { nowait = true } },
     ["<leader>Q"] = { ":qa<cr>", "Close all buffers", opts = { nowait = true } },
-    ["<leader>gg"] = { ":LazyGit<cr>", "Lazy Git", opts = { nowait = true}},
-    ["K"] = { function() vim.lsp.buf.hover() end, "Hover symbol details" },
+    ["<leader>gg"] = { ":LazyGit<cr>", "Lazy Git", opts = { nowait = true } },
+    ["K"] = {
+      function()
+        vim.lsp.buf.hover()
+      end,
+      "Hover symbol details",
+    },
 
     ["<leader>a"] = { "<cmd>A<cr>", "Alternate File", opts = { nowait = true } },
 
     ["|"] = { "<cmd>vsplit<cr>", "Vertical split" },
-    ["-"] = { "<cmd>split<cr>", "Horiz. split"},
+    ["-"] = { "<cmd>split<cr>", "Horiz. split" },
 
-    ["<leader>l"] = { function() end, "LSP"},
-    ["<leader>lc"] = { function() vim.lsp.codelens.run() end, "Run codelens"},
+    ["<leader>l"] = { function() end, "LSP" },
+    ["<leader>lc"] = {
+      function()
+        vim.lsp.codelens.run()
+      end,
+      "Run codelens",
+    },
   },
   v = {
-    [">"] = { ">gv", "indent"},
+    [">"] = { ">gv", "indent" },
   },
   i = {
     -- copilot
     ["<C-Enter>"] = { "<cmd>:Copilot suggestion accept<cr>", "Accept Suggestion" },
     ["<C-Down>"] = { "<cmd>:Copilot suggertion next<cr>", "Next Suggestion" },
     ["<C-Up>"] = { "<cmd>:Copilot suggertion prev<cr>", "Next Suggestion" },
-    ["<C-p>"] = { "<cmd>:Copilot panel<cr>", "Copilot Panel"  },
+    ["<C-p>"] = { "<cmd>:Copilot panel<cr>", "Copilot Panel" },
   },
-
 }
 
 -- more keybinds!
