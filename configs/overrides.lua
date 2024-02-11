@@ -13,6 +13,7 @@ M.treesitter = {
     "c",
     "markdown",
     "markdown_inline",
+    "elixir"
   },
   indent = {
     enable = true,
@@ -55,6 +56,17 @@ M.nvimtree = {
         git = true,
       },
     },
+  },
+}
+
+M.cmp = {
+  sources = {
+    { name = "copilot" },
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = "buffer" },
+    { name = "nvim_lua" },
+    { name = "path" },
   },
 }
 

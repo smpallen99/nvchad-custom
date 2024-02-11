@@ -36,10 +36,25 @@ M.general = {
     ["<leader>gg"] = { ":LazyGit<cr>", "Lazy Git", opts = { nowait = true}},
     ["K"] = { function() vim.lsp.buf.hover() end, "Hover symbol details" },
 
+    ["<leader>a"] = { "<cmd>A<cr>", "Alternate File", opts = { nowait = true } },
+
+    ["|"] = { "<cmd>vsplit<cr>", "Vertical split" },
+    ["-"] = { "<cmd>split<cr>", "Horiz. split"},
+
+    ["<leader>l"] = { function() end, "LSP"},
+    ["<leader>lc"] = { function() vim.lsp.codelens.run() end, "Run codelens"},
   },
   v = {
     [">"] = { ">gv", "indent"},
   },
+  i = {
+    -- copilot
+    ["<C-Enter>"] = { "<cmd>:Copilot suggestion accept<cr>", "Accept Suggestion" },
+    ["<C-Down>"] = { "<cmd>:Copilot suggertion next<cr>", "Next Suggestion" },
+    ["<C-Up>"] = { "<cmd>:Copilot suggertion prev<cr>", "Next Suggestion" },
+    ["<C-p>"] = { "<cmd>:Copilot panel<cr>", "Copilot Panel"  },
+  },
+
 }
 
 -- more keybinds!
