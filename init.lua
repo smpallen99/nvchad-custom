@@ -22,8 +22,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
--- require("ex_projectionist").setup()
-
 -- autocmd("BufEnter", {
 --   pattern = "*",
 --   command = :lua require('lazygit.utils').project_root_dir(),
