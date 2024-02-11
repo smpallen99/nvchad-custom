@@ -47,6 +47,11 @@ M.general = {
       "formatting",
     },
 
+    ["<leader>fb"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
+    ["<leader>fN"] = { "<cmd>Telescope noice<cr>", "Noice" },
+    ["<leader>fn"] = { "<cmd>Telescope notify<cr>", "Notify" },
+    ["<leader>fd"] = { "<cmd>Telescope diagnostics<cr>", "Notify" },
+
     -- ["<leader>g"] = { function() end, "+ 󰊢 Git" },
     ["<leader>W"] = { function() end, "Workspace & Whickkey" },
     ["<leader>Wa"] = {
@@ -95,6 +100,21 @@ M.general = {
       end,
       "Run codelens",
     },
+    ["<leader>nl"] = {
+      function()
+        require("noice").cmd "last"
+      end,
+      "Noice last",
+    },
+    ["<leader>nh"] = {
+      function()
+        require("noice").cmd "history"
+      end,
+      "Noice hitory",
+    },
+
+    -- Noice
+    ["<leader>n"] = { function() end, "Noice" },
   },
   v = {
     [">"] = { ">gv", "indent" },
@@ -106,8 +126,20 @@ M.general = {
     ["<C-Up>"] = { "<cmd>:Copilot suggertion prev<cr>", "Next Suggestion" },
     ["<C-p>"] = { "<cmd>:Copilot panel<cr>", "Copilot Panel" },
   },
+
+  -- more keybinds!
 }
 
--- more keybinds!
+vim.keymap.set({ "n", "i", "s" }, "<c-f>", function()
+  if not require("noice.lsp").scroll(4) then
+    return "<c-f>"
+  end
+end, { silent = true, expr = true })
+
+vim.keymap.set({ "n", "i", "s" }, "<c-b>", function()
+  if not require("noice.lsp").scroll(-4) then
+    return "<c-b>"
+  end
+end, { silent = true, expr = true })
 
 return M

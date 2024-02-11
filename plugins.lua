@@ -204,6 +204,25 @@ local plugins = {
     enabled = vim.g.icons_enabled,
     config = require "custom.configs.lspkind",
   },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    config = function()
+      require "custom.configs.noice"
+      require("telescope").load_extension "noice"
+    end,
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+  },
 
   -- To make a plugin not be loaded
   -- {
@@ -219,5 +238,7 @@ local plugins = {
   --   lazy = false,
   -- }
 }
+
+-- require "custom.configs.noice"
 
 return plugins
