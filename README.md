@@ -4,5 +4,5 @@ This can be used as an example custom config for NvChad. Do check the https://gi
 
 # TODO
 
-* [] Expand whichkey mappings
-* [] Fix Elixir test lenses
+* [ ] Expand whichkey mappings
+* [ ] Fix Elixir test lenses
