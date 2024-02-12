@@ -66,6 +66,20 @@ local plugins = {
     end,
   },
 
+  {
+    "robitx/gp.nvim",
+    enable = true,
+    lazy = false,
+    config = function()
+      require("gp").setup(require "custom.plugins.configs.gp")
+
+      -- or setup with your own config (see Install > Configuration in Readme)
+      -- require("gp").setup(config)
+
+      -- shortcuts might be setup here (see Usage > Shortcuts in Readme)
+    end,
+  },
+
   -- {
   --   "kevinhwang91/nvim-ufo",
   --   event = { "User AstroFile", "InsertEnter" },

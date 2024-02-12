@@ -14,10 +14,10 @@ local M = {}
 --   t = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
 -- }
 --
---
-M.whichkey = {
-  plugin = true,
 
+require "custom.gp_mappings"
+
+M.whichkey = {
   n = {
     ["<leader>WK"] = {
       function()
@@ -37,6 +37,8 @@ M.whichkey = {
 
 M.general = {
   n = {
+
+    ["<C-g>"] = { function() end, "GpChat" },
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
 
     --  format with conform
@@ -118,13 +120,15 @@ M.general = {
   },
   v = {
     [">"] = { ">gv", "indent" },
+    ["<C-g>"] = { function() end, "GpChat" },
   },
   i = {
     -- copilot
     ["<C-Enter>"] = { "<cmd>:Copilot suggestion accept<cr>", "Accept Suggestion" },
     ["<C-Down>"] = { "<cmd>:Copilot suggertion next<cr>", "Next Suggestion" },
     ["<C-Up>"] = { "<cmd>:Copilot suggertion prev<cr>", "Next Suggestion" },
-    ["<C-p>"] = { "<cmd>:Copilot panel<cr>", "Copilot Panel" },
+
+    ["<C-g>"] = { function() end, "GpChat" },
   },
 
   -- more keybinds!
